@@ -1,6 +1,5 @@
 package ru.ogai.homeworks.homework11;
 
-import java.util.Scanner;
 
 public class Animal {
     protected String name;
@@ -16,19 +15,36 @@ public class Animal {
     }
 
     public double run(int distance) {
-        if (distance <= 0) {
-            System.out.println("Ошибка: расстояние должно быть положительным числом");
-            return -1;
+        if (distance > 0) {
+            double time = (double) distance / runSpeed;
+            stamina -= distance;
+            if (stamina < 0) {
+                System.out.println(name + " устал(а) и не может продолжать бег");
+                stamina = 0;
+                return -1;
+            }
+            System.out.println(name + " пробежал(а) " + distance + " метров за " + time + " секунд");
+            return time;
         }
-        double time = distance / runSpeed;
-        stamina -= distance;
-        if (stamina < 0) {
-            System.out.println(name + " устал(а) и не может продолжать бег");
-            stamina = 0;
-            return -1;
-        }
-        System.out.println(name + " пробежал(а) " + distance + " метров за " + time + " секунд");
-        return time;
+        System.out.println("Расстояние отрицательно");
+        return -1;
     }
 
+        public double swim(int distance){
+            if (distance > 0) {
+                double time = (double) distance / runSpeed;
+                stamina -= distance;
+                if (stamina < 0) {
+                    System.out.println(name + " устал(а) и не может продолжать plyt");
+                    stamina = 0;
+                    return -1;
+                }
+                System.out.println(name + " proplyl(а) " + distance + " метров за " + time + " секунд");
+                return time;
+            }
+            System.out.println("Расстояние отрицательное");
+            return -1;
+
+
+        }
 }
